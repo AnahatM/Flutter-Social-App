@@ -76,7 +76,9 @@ class _RegisterPageState extends State<RegisterPage> {
       if (mounted) {
         Navigator.pop(context);
       }
-    } on FirebaseAuthException catch (e) {
+    }
+    // Display any errors
+    on FirebaseAuthException catch (e) {
       if (mounted) {
         // Pop Loading Indicator
         Navigator.pop(context);
