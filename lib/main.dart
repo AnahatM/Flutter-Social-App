@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:minimalist_social_media/pages/login_page.dart';
+import 'package:minimalist_social_media/auth/login_or_register.dart';
 import 'package:minimalist_social_media/themes/dark_mode.dart';
 import 'package:minimalist_social_media/themes/light_mode.dart';
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: const LoginOrRegister(),
       theme: lightTheme,
       darkTheme: darkTheme,
     );

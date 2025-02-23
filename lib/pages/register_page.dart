@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:minimalist_social_media/components/my_button.dart';
 import 'package:minimalist_social_media/components/my_text_field.dart';
 
-class LoginPage extends StatelessWidget {
-  // Register Page Link OnTap Function
-  final void Function()? onRegisterTap;
+class RegisterPage extends StatelessWidget {
+  // Login Page Link OnTap Function
+  final void Function()? onLoginTap;
 
-  LoginPage({super.key, required this.onRegisterTap});
+  RegisterPage({super.key, required this.onLoginTap});
 
   // Text Field Controllers
+  final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
-  // Login Button OnTap Function
-  void login() {}
+  // Register Button OnTap Function
+  void register() {}
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +44,15 @@ class LoginPage extends StatelessWidget {
 
               // Email Textfield
               MyTextField(
+                hintText: 'Username',
+                obscureText: false,
+                controller: usernameController,
+              ),
+
+              const SizedBox(height: 10),
+
+              // Email Textfield
+              MyTextField(
                 hintText: 'Email',
                 obscureText: false,
                 controller: emailController,
@@ -57,41 +69,35 @@ class LoginPage extends StatelessWidget {
 
               const SizedBox(height: 10),
 
-              // Forgot Password
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    "Forgot Password?",
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.inversePrimary,
-                    ),
-                  ),
-                ],
+              // Confirm Password Textfield
+              MyTextField(
+                hintText: 'Confirm Password',
+                obscureText: true,
+                controller: confirmPasswordController,
               ),
 
               const SizedBox(height: 25),
 
-              // Login Button
-              MyButton(text: "Login", onTap: login),
+              // Register Button
+              MyButton(text: "Register", onTap: register),
 
               const SizedBox(height: 20),
 
-              // Register Page Link
+              // Login Page Link
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Don't have an account?",
+                    "Already have an account?",
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary,
                     ),
                   ),
                   const SizedBox(width: 5),
                   GestureDetector(
-                    onTap: onRegisterTap,
+                    onTap: onLoginTap,
                     child: Text(
-                      "Register Here",
+                      "Login Here",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
