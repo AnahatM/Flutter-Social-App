@@ -6,8 +6,10 @@ class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
 
   // Logout Function
-  void logout() {
+  void logout(BuildContext context) {
     FirebaseAuth.instance.signOut();
+    // Navigate to Home Page
+    Navigator.pushReplacementNamed(context, '/login_register_page');
   }
 
   @override
@@ -71,7 +73,7 @@ class MyDrawer extends StatelessWidget {
             child: MyDrawerTile(
               title: "L O G O U T",
               icon: Icons.logout,
-              onTap: logout,
+              onTap: () => logout(context),
             ),
           ),
         ],

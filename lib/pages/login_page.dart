@@ -46,8 +46,14 @@ class _LoginPageState extends State<LoginPage> {
         email: emailController.text,
         password: passwordController.text,
       );
+
       // Hide loading circle
       if (mounted) Navigator.pop(context);
+
+      // Navigate to Home Page
+      if (mounted) {
+        Navigator.pushReplacementNamed(context, '/home_page');
+      }
     }
     // Display any errors
     on FirebaseAuthException catch (e) {
@@ -84,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 25),
 
               // App Title
-              Text("S T A L K E R", style: TextStyle(fontSize: 20)),
+              Text("S O C I A L", style: TextStyle(fontSize: 20)),
 
               const SizedBox(height: 50),
 

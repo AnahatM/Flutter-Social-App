@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:minimalist_social_media/components/my_button.dart';
@@ -67,14 +68,24 @@ class _RegisterPageState extends State<RegisterPage> {
             email: emailController.text,
             password: passwordController.text,
           );
+
+      // Create a User document in Firestore
+      createUserDocument(userCredential);
+
+      // Pop Loading Indicator
+      if (mounted) {
+        Navigator.pop(context);
+      }
+
       // Clear Text Fields
       usernameController.clear();
       emailController.clear();
       passwordController.clear();
       confirmPasswordController.clear();
-      // Pop Loading Indicator
+
+      // Navigate to Home Page
       if (mounted) {
-        Navigator.pop(context);
+        Navigator.pushReplacementNamed(context, '/home_page');
       }
     }
     // Display any errors
@@ -92,17 +103,28 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
+  // Create User Document in Firestore Function
+  Future<void> createUserDocument(UserCredential? userCredential) async {
+    if (userCredential == null || userCredential.user == null) return;
+    // Create User Document
+    await FirebaseFirestore.instance
+        .collection('Users')
+        .doc(userCredential.user!.email)
+        .set({
+          'email': userCredential.user!.email,
+          'username': usernameController.text,
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false, // Add this line
+      resizeToAvoidBottomInset: false,
       backgroundColor: Theme.of(context).colorScheme.surface,
-      body: SingleChildScrollView(
-        // Wrap the main content with SingleChildScrollView
-        child: Center(
+      body: Center(
+        child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(25.0),
-            // Main UI Content Column
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -116,11 +138,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(height: 25),
 
                 // App Title
-                Text("S T A L K E R", style: TextStyle(fontSize: 20)),
+                Text("S O C I A L", style: TextStyle(fontSize: 20)),
 
                 const SizedBox(height: 50),
 
-                // Email Textfield
+                // Username Textfield
                 MyTextField(
                   hintText: 'Username',
                   obscureText: false,
