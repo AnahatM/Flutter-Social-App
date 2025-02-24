@@ -2,6 +2,11 @@
 
 This is a social-media app made using Flutter, featuring authentication, posting, and user profiles, with a modern, minimalist interface.
 
+## Screenshots
+
+<img src="images/SocialApp2.png" alt="Screenshot 2" width="500px">
+<img src="images/SocialApp1.png" alt="Screenshot 1" width="500px">
+
 ## Flutter Guide
 
 A few resources to get you started if this is your first Flutter project:
