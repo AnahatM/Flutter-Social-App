@@ -2,6 +2,9 @@
 
 This is a social-media app made using Flutter, featuring authentication, posting, and user profiles, with a modern, minimalist interface.
 
+![Flutter](https://img.shields.io/badge/-Flutter-05122A?style=flat-square&logo=Flutter&color=2a2e34) 
+![Dart](https://img.shields.io/badge/-Dart-05122A?style=flat-square&logo=Dart&color=2a2e34)
+
 ## Screenshots
 
 <img src="images/SocialApp2.png" alt="Screenshot 2" width="500px">
